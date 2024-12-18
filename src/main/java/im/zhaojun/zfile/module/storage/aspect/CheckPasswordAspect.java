@@ -43,7 +43,7 @@ public class CheckPasswordAspect {
 	 *
 	 * @param   point
 	 *          连接点
-	 *
+	 * 校验相关密码是否正确
 	 * @return  方法运行结果
 	 */
 	@Around(value = "@annotation(im.zhaojun.zfile.module.storage.annotation.CheckPassword)")

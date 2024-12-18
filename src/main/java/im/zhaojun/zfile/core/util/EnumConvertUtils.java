@@ -33,15 +33,19 @@ public class EnumConvertUtils {
 			return null;
 		}
 
+		// 获取所有字段
 		Field[] fields = ReflectUtil.getFields(clazz);
 		for (Field field : fields) {
 			boolean jsonValuePresent = field.isAnnotationPresent(JsonValue.class);
 			boolean enumValuePresent = field.isAnnotationPresent(EnumValue.class);
 
 			if (jsonValuePresent || enumValuePresent) {
+
+				// 获取所有实例
 				Object[] enumConstants = clazz.getEnumConstants();
 
 				for (Object enumObj : enumConstants) {
+					// 获取值
 					if (ObjectUtil.equal(value, ReflectUtil.getFieldValue(enumObj, field))) {
 						return (Enum<?>) enumObj;
 					}

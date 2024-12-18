@@ -48,7 +48,7 @@ public class CodeMsg {
 	public static CodeMsg STORAGE_SOURCE_FORBIDDEN = new CodeMsg("40103", "无权访问存储源");
 	public static CodeMsg STORAGE_SOURCE_FILE_FORBIDDEN = new CodeMsg("40104", "无权访问该目录");
 	public static CodeMsg STORAGE_SOURCE_ILLEGAL_OPERATION = new CodeMsg("40105", "非法操作");
-	
+	public static CodeMsg EXPIRE_ACCESS_TOKEN = new CodeMsg("40106", "accessToken 过期");
 	
 	
 	// -------------- 服务端处理错误 --------------

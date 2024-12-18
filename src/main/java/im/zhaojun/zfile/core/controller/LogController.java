@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,7 @@ public class LogController {
 
     @GetMapping("/log/download")
     @ApiOperation(value = "下载系统日志")
+    @PreAuthorize("hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')")
     public ResponseEntity<Resource> downloadLog() {
         if (log.isDebugEnabled()) {
             log.debug("下载诊断日志");
@@ -43,5 +45,7 @@ public class LogController {
         String currentDate = DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss");
         return FileResponseUtil.exportSingleThread(fileZip, "ZFile 诊断日志 - " + currentDate + ".zip");
     }
+
+
 
 }

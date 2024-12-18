@@ -23,9 +23,17 @@
         <jackson-bom.version>2.14.1</jackson-bom.version>
         <sqlite-jdbc.version>3.41.2.2</sqlite-jdbc.version>
         <packaging>jar</packaging>
+        <jwt.version>0.10.7</jwt.version>
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.uyoqu.framework/maven-plugin-starter -->
+<!--        <dependency>-->
+<!--            <groupId>com.uyoqu.framework</groupId>-->
+<!--            <artifactId>maven-plugin-starter</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+
         <!-- spring boot 官方相关 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -106,12 +114,17 @@
 
 
         <!-- 登陆/权限相关 -->
-        <dependency>
-            <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-spring-boot-starter</artifactId>
-            <version>1.34.0.temp1</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.dev33</groupId>-->
+<!--            <artifactId>sa-token-spring-boot-starter</artifactId>-->
+<!--            <version>1.34.0.temp1</version>-->
+<!--        </dependency>-->
 
+        <!--基于SpringSecurity实现-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <!-- 文档相关 -->
         <dependency>
@@ -208,6 +221,52 @@
             <artifactId>dns-cache-manipulator</artifactId>
             <version>1.8.1</version>
         </dependency>
+
+        <dependency>
+
+            <groupId>org.apache.maven.plugins</groupId>
+
+            <artifactId>maven-jar-plugin</artifactId>
+
+            <version>3.2.0</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <version>3.12.1</version>
+        </dependency>
+
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -250,6 +309,7 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
@@ -290,6 +350,7 @@
                             </execution>
                         </executions>
                     </plugin>
+
                 </plugins>
             </build>
         </profile>

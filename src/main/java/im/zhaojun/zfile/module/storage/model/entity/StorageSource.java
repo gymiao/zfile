@@ -1,6 +1,5 @@
 package im.zhaojun.zfile.module.storage.model.entity;
 
-import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.BooleanUtil;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -106,8 +105,8 @@ public class StorageSource implements Serializable {
     private Boolean compatibilityReadme;
 
     public boolean getAllowOperator() {
-        // 允许文件操作，且允许匿名操作或者当前登录用户是管理员
-        return BooleanUtil.isTrue(enableFileOperator) && (BooleanUtil.isTrue(enableFileAnnoOperator) || StpUtil.isLogin());
+        // TODO 允许文件操作，且允许匿名操作或者当前登录用户是管理员，假值 true
+        return BooleanUtil.isTrue(enableFileOperator) && (BooleanUtil.isTrue(enableFileAnnoOperator) || true);
     }
 
 }

@@ -1,6 +1,5 @@
 package im.zhaojun.zfile.core.filter;
 
-import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import im.zhaojun.zfile.core.constant.MdcConstant;
@@ -29,7 +28,8 @@ public class MDCFilter implements Filter {
 		
 		MDC.put(MdcConstant.TRACE_ID, IdUtil.fastUUID());
 		MDC.put(MdcConstant.IP, ServletUtil.getClientIP(httpServletRequest));
-		MDC.put(MdcConstant.USER, StpUtil.isLogin() ? StpUtil.getLoginIdAsString() : "anonymous");
+		// TODO 获取登录用户信息
+		// MDC.put(MdcConstant.USER, StpUtil.isLogin() ? StpUtil.getLoginIdAsString() : "anonymous");
 		
 		try {
 			filterChain.doFilter(httpServletRequest, httpServletResponse);
